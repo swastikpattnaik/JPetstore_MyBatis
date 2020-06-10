@@ -1,5 +1,6 @@
-FROM openjdk:8-jre-alpine 
+FROM tomcat:8.0.51-jre8-alpine
 LABEL maintainer="swastik.pattnaik57b@gmail.com" 
-COPY target/jpetstore.war /jpetstore.war 
-CMD ["/usr/bin/java","-jar","-Dspring.profiles.active=default","/jpetstore.war"]
-
+WORKDIR /usr/local/tomcat
+RUN rm -rf /usr/local/tomcat/webapps/*
+COPY ./target/jpetstore.war /usr/local/tomcat/webapps/jpetstore.war
+CMD ["catalina.sh","run"]
