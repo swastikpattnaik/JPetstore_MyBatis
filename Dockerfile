@@ -1,5 +1,5 @@
-FROM anapsix/alpine-java 
+FROM openjdk:8-jre-alpine 
 LABEL maintainer="swastik.pattnaik57b@gmail.com" 
-COPY /target/jpetstore.jar /home/jpetstore.jar 
-CMD ["java","-jar","/home/jpetstore.jar"]
+COPY target/jpetstore.war /jpetstore.war 
+CMD ["/usr/bin/java","-jar","-Dspring.profiles.active=default","/jpetstore.war"]
 
