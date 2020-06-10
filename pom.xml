@@ -169,18 +169,20 @@
     <finalName>jpetstore</finalName>
     <pluginManagement>
       <plugins>
-        <plugin>
+	<plugin>
+	<!-- Build an executable JAR -->
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.1.0</version>
-          <configuration>
-            <archive>
-              <manifestEntries>
-                <Dependencies>jdk.unsupported</Dependencies>
-              </manifestEntries>
-            </archive>
-          </configuration>
-        </plugin>
+	  <artifactId>maven-jar-plugin</artifactId>
+	  <version>3.2.0</version>
+	  <configuration>
+	    <archive>
+	      <manifest>
+		<addClasspath>true</addClasspath>
+		<mainClass>fully.qualified.MainClass</mainClass>
+	      </manifest>
+	    </archive>
+	  </configuration>
+	</plugin>
         <plugin>
           <artifactId>maven-failsafe-plugin</artifactId>
           <version>3.0.0-M4</version>
